@@ -1,7 +1,12 @@
 package com.arfurniture.demo;
 
+import java.sql.Timestamp;
+import java.util.Random;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -9,11 +14,8 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Furniture {
     @Id
-    private String id;
-
-    // @ManyToOne
-    // @JoinColumn(name = "home_id")
-    // private String homeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column
     private double position;
@@ -24,8 +26,15 @@ public class Furniture {
     @Column
     private double scale;
 
-    //getter
-    public String getId() {
+    @ManyToOne
+    @JoinColumn(name = "home_id")
+    private Home home;
+
+    public void setHome(Home home) {
+        this.home = home;
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -41,22 +50,14 @@ public class Furniture {
         return scale;
     }
 
-
-    //setter
-    public void setId(String id) {
-        this.id = id;
+    public Furniture() {
     }
 
-    public void setPosition(double position) {
+    public Furniture(double position, double rotation, double scale, Home home) {
         this.position = position;
-    }
-
-    public void setRotation(double rotation) {
         this.rotation = rotation;
-    }
-
-    public void setScale(double scale) {
         this.scale = scale;
+        this.home = home;
     }
 
 }
