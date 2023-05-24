@@ -1,8 +1,5 @@
 package com.arfurniture.demo;
 
-import java.sql.Timestamp;
-import java.util.Random;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,13 +15,43 @@ public class Furniture {
     private long id;
 
     @Column
-    private double position;
+    private int m_FileID;
 
     @Column
-    private double rotation;
+    private int m_PathID;
 
     @Column
-    private double scale;
+    private String name;
+
+    @Column
+    private double positionX;
+
+    @Column
+    private double positionY;
+
+    @Column
+    private double positionZ;
+
+    @Column
+    private double scaleX;
+
+    @Column
+    private double scaleY;
+
+    @Column
+    private double scaleZ;
+
+    @Column
+    private double rotationX;
+
+    @Column
+    private double rotationY;
+
+    @Column
+    private double rotationZ;
+
+    @Column
+    private double rotationW;
 
     @ManyToOne
     @JoinColumn(name = "home_id")
@@ -38,26 +65,76 @@ public class Furniture {
         return id;
     }
 
-    public double getPosition() {
-        return position;
+    public int getM_FileID() {
+        return m_FileID;
     }
 
-    public double getRotation() {
-        return rotation;
+    public int getM_PathID() {
+        return m_PathID;
     }
 
-    public double getScale() {
-        return scale;
+    public String getName() {
+        return name;
+    }
+
+    public double getPositionX() {
+        return positionX;
+    }
+
+    public double getPositionY() {
+        return positionY;
+    }
+
+    public double getPositionZ() {
+        return positionZ;
+    }
+
+    public double getScaleX() {
+        return scaleX;
+    }
+
+    public double getScaleY() {
+        return scaleY;
+    }
+
+    public double getScaleZ() {
+        return scaleZ;
+    }
+
+    public double getRotationX() {
+        return rotationX;
+    }
+
+    public double getRotationY() {
+        return rotationY;
+    }
+
+    public double getRotationZ() {
+        return rotationZ;
+    }
+
+    public double getRotationW() {
+        return rotationW;
     }
 
     public Furniture() {
     }
 
-    public Furniture(double position, double rotation, double scale, Home home) {
-        this.position = position;
-        this.rotation = rotation;
-        this.scale = scale;
+    public Furniture(int m_FileID, int m_PathID, String name, double positionX, double positionY, double positionZ, double scaleX, double scaleY, double scaleZ, double rotationX, double rotationY, double rotationZ, double rotationW, Home home)
+    {
+        this.m_FileID = m_FileID;
+        this.m_PathID = m_PathID;
+        this.name = name;
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.positionZ = positionZ;
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
+        this.scaleZ = scaleZ;
+        this.rotationX = rotationX;
+        this.rotationY = rotationY;
+        this.rotationZ = rotationZ;
+        this.rotationW = rotationW;
         this.home = home;
     }
-
 }
